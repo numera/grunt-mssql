@@ -14,12 +14,10 @@
   "bugs": {
     "url": "https://github.com/phung/grunt-mssql/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/phung/grunt-mssql/blob/master/LICENSE-MIT"
-    }
-  ],
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://github.com/phung/grunt-mssql/blob/master/LICENSE-MIT"
+  }],
   "main": "Gruntfile.js",
   "engines": {
     "node": ">= 0.8.0"
@@ -40,6 +38,6 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "tedious": "~0.1.5"
+    "tedious": "^1.7.0"
   }
 }
