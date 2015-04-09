@@ -1,5 +1,10 @@
 # grunt-mssql
 
+## installation
+```
+npm install numera/grunt-mssql.git --save-dev
+```
+
 > A wrapper around tedious for executing query against Microsoft Sql Server.  This is not meant to be used in a 
 production enviroment but more for E2E testing where there is a need to take database snapshot and restoring the snapshot.
 
@@ -50,7 +55,7 @@ Default value: `'.'`
 Password for the account
 
 #### query
-Type: `String`
+Type: `String` or `String[]`
 Default value: `'.'`
 
 Sql statement to be executed
@@ -69,8 +74,13 @@ grunt.initConfig({
             query: "EXECUTE SomeStoreProcedueToTakeSnapshot;"
         },
         restore: {
-            query: "RESTORE DATABASE MyDatabase FROM DATABASE_SNAPSHOT = 'MyDatabaseSnapShot';"
+            query: [
+              "ALTER DATABASE MyDatabase SET SINGLE_USER WITH ROLLBACK IMMEDIATE;",
+              "RESTORE DATABASE MyDatabase FROM DATABASE_SNAPSHOT =  'MyDatabaseSnapShot';",
+              "ALTER DATABASE MyDatabase SET MULTI_USER;"
+              ]
+
         }
     }
-})
+});
 ```
