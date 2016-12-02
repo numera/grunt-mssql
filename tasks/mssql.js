@@ -12,11 +12,7 @@ module.exports = function(grunt) {
     var Connection = require('tedious').Connection;
     var Request = require('tedious').Request;
 
-    var connection = new Connection({
-      server: options.server,
-      userName: options.userName,
-      password: options.password
-    });
+    var connection = new Connection(options);
 
     var query = this.data.query;
     if (this.data.query.constructor === Array) {
